@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="test"></div>
+    <div id="test2"></div>
+
+    <script type="text/babel">
+        // jsx语法
+        const element = <h1>Hello, React</h1>;
+        ReactDOM.render(
+            element,
+            document.getElementById('test')
+        );
+
+    </script>
+
+    <!-- babel翻译后 -->
+    <script type="text/javaScript">
+        // 创建虚拟dom
+        /*
+            虚拟dom
+            1. 比真实dom轻量
+            2. 最终会被转化为真实dom
+        */
+        const vDOM = React.createElement('h1', {id: 'title'}, 'Hello React');
+        // 渲染虚拟dom到页面
+        ReactDOM.render(vDOM, document.getElementById('test2'));
+    </script>
+
+
+    <script type="text/babel">
+
+        const id = 'id';
+        const data = 'data';
+
+        /*
+            jsx语法规则:
+                1. 定义虚拟DOM时，不要写引号
+                2. 标签中混入js表达式，使用 {}
+                3. 样式的类名指定使用className
+                4. 内联样式，使用style={{key:value}}的形式
+                5. 只有一个根标签，标签必须闭合
+                6. 标签首字符
+                    1. 若小写字母开头，则改标签为html中的同名元素，没有则报错
+                    2. 若大写字母开头，react就去渲染对应的组件，没有则报错
+        */
+        const vDOM = (
+            <h2 id={id}>
+                <span style={{color:'red', fontSize:100}}>{data}</span>    
+            </h2>
+        );
+
+        ReactDOM.render(vDOM, document.getElementById('test'));
+
+    </script>
+
+
+    <script type="text/babel">
+
+        const dataList = ['Angular', 'React', 'Vue'];
+
+        const vDOM = (
+            <div>
+                <h1>前端js框架列表</h1>    
+                <ul>
+                    {
+                        dataList.map((data,index)=>
+                            <li key={index}> {data} </li>
+                        )
+                    }
+                </ul>
+            </div>
+        );
+
+        ReactDOM.render(vDOM, document.getElementById('test2'));
+        
+
+    
+    </script>
+
+
+
+</body>
+</html>

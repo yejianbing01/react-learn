@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+
+    <div id="test"></div>
+
+    <script type="text/babel">
+
+        /* props 是自读属性
+        
+        
+        */
+        // class Person extends React.Component {
+
+        //     constructor(props){
+        //         super(props);
+        //     }
+
+        //     render(){
+        //         console.log(this);
+        //         const {name, age, sex} = this.props;
+        //         return (
+        //             <ul>
+        //                 <li>姓名: {name}</li>    
+        //                 <li>年龄: {age}</li>    
+        //                 <li>性别: {sex}</li>    
+        //             </ul>
+        //         )
+        //     }
+        // }
+
+        function Person(props){
+                const {name, age, sex} = props;
+                return (
+                    <ul>
+                        <li>姓名: {name}</li>    
+                        <li>年龄: {age}</li>    
+                        <li>性别: {sex}</li>    
+                    </ul>
+                )
+        }
+
+        const data = {name:'xx', age:'11', sex: '男'};
+
+        ReactDOM.render(<Person {...data}/>, document.getElementById('test'));
+
+    </script>
+    
+</body>
+</html>

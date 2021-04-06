@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+
+    <div id="test"></div>
+
+
+
+    <!-- <script type="text/babel">
+
+        /* state
+
+            1. state 存放数据，数据驱动页面
+            2. state 不能直接修改，需要使用 内置方法 setState() 方法修改
+
+            原生事件绑定
+                1. .addEventListener('click', ()=>{});
+                2. .onclick = ()=>{};
+                3. <button onclick="eventFunction()"></button>;
+        */
+        class Weather extends React.Component {
+            // 构造方法调用一次
+            constructor(props){
+                super(props);
+                this.state = {isHot: true};
+                this.changeWeather = this.changeWeather.bind(this);
+            }
+            //  调用 1+n 次
+            render(){
+                console.log(this);
+                return <h1 onClick={this.changeWeather}>今天天气很{ this.state.isHot ? '炎热' : '凉爽'}</h1>
+            }
+
+            changeWeather(){
+                // this 是 undefined
+                const isHot = this.state.isHot;
+                // 必须使用 setState修改状态
+                this.setState({isHot: !isHot});
+            }
+        }
+
+        ReactDOM.render(<Weather/>, document.getElementById('test'));
+
+
+    </script> -->
+
+
+    <!-- state 简写 -->
+    <script type="text/babel">
+
+        /* state
+
+            1. state 存放数据，数据驱动页面
+            2. state 不能直接修改，需要使用 内置方法 setState() 方法修改
+
+            原生事件绑定
+                1. .addEventListener('click', ()=>{});
+                2. .onclick = ()=>{};
+                3. <button onclick="eventFunction()"></button>;
+        */
+        class Weather extends React.Component {
+
+            state={isHot: true}
+
+            render () {
+                return <h1 onClick={this.changeWeather}>今天天气很{ this.state.isHot ? '炎热' : '凉爽'}</h1>
+            }
+
+            changeWeather = () => {
+                // this 是 Weather 实例
+                const isHot = this.state.isHot;
+                this.setState({isHot: !isHot});
+            }
+        }
+
+        ReactDOM.render(<Weather/>, document.getElementById('test'));
+
+
+    </script>
+        
+
+    
+</body>
+</html>
